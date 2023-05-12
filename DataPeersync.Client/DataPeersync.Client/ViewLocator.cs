@@ -15,7 +15,9 @@ namespace DataPeersync.Client
 			var name = data.GetType().FullName!.Replace("ViewModel", "View");
 			var type = Type.GetType(name);
 
-			return type != null ? (Control)Activator.CreateInstance(type)! : (IControl)new TextBlock { Text = name };
+			return type != null
+				? (Control)Activator.CreateInstance(type)!
+				: (IControl)new TextBlock { Text = name };
 		}
 
 		public bool Match(object? data)

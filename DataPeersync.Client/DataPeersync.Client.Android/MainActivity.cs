@@ -4,7 +4,12 @@ using Avalonia.Android;
 
 namespace DataPeersync.Client.Android
 {
-	[Activity(Label = "DataPeersync.Client.Android", Theme = "@style/MyTheme.NoActionBar", Icon = "@drawable/icon", LaunchMode = LaunchMode.SingleTop, ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize)]
+	[Activity(
+		Label = "DataPeersync.Client.Android",
+		Theme = "@style/MyTheme.NoActionBar",
+		Icon = "@drawable/icon",
+		LaunchMode = LaunchMode.SingleTop,
+		ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize)]
 	public class MainActivity : AvaloniaMainActivity
 	{
 	}
