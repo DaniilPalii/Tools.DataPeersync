@@ -1,8 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using DataPeersync.Client.ViewModels;
-using DataPeersync.Client.Views;
+using DataPeersync.Client.Main;
 
 namespace DataPeersync.Client
 {

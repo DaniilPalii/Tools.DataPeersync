@@ -1,6 +1,6 @@
 ﻿using ReactiveUI;
 
-namespace DataPeersync.Client.ViewModels
+namespace DataPeersync.Client
 {
 	public class ViewModelBase : ReactiveObject
 	{

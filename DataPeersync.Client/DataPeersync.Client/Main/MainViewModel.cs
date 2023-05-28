@@ -1,4 +1,4 @@
-﻿namespace DataPeersync.Client.ViewModels
+﻿namespace DataPeersync.Client.Main
 {
 	public class MainViewModel : ViewModelBase
 	{

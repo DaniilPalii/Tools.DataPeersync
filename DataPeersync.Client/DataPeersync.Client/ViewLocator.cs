@@ -1,7 +1,6 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using DataPeersync.Client.ViewModels;
 
 namespace DataPeersync.Client
 {
