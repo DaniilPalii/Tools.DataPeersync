@@ -1,4 +1,4 @@
-namespace DataPeersync.Client.Main.FileReceiving
+namespace DataPeersync.Client.MainWindow.FileReceiving
 {
 	internal class FileReceivingViewModel : ViewModelBase
 	{

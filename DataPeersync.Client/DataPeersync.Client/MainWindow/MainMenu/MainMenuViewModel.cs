@@ -1,4 +1,4 @@
-namespace DataPeersync.Client.Main.MainMenu
+namespace DataPeersync.Client.MainWindow.MainMenu
 {
 	internal class MainMenuViewModel : ViewModelBase
 	{

@@ -1,9 +1,9 @@
-﻿using DataPeersync.Client.Main.FileReceiving;
-using DataPeersync.Client.Main.FileSending;
-using DataPeersync.Client.Main.MainMenu;
+﻿using DataPeersync.Client.MainWindow.FileReceiving;
+using DataPeersync.Client.MainWindow.FileSending;
+using DataPeersync.Client.MainWindow.MainMenu;
 using ReactiveUI;
 
-namespace DataPeersync.Client.Main
+namespace DataPeersync.Client.MainWindow
 {
 	public class MainViewModel : ViewModelBase, INavigator
 	{

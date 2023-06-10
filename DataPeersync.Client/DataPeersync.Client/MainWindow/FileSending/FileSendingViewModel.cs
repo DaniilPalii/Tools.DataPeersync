@@ -1,4 +1,4 @@
-namespace DataPeersync.Client.Main.FileSending
+namespace DataPeersync.Client.MainWindow.FileSending
 {
 	internal class FileSendingViewModel : ViewModelBase
 	{

@@ -1,7 +1,8 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using DataPeersync.Client.Main;
+using DataPeersync.Client.MainWindow;
+using MainView = DataPeersync.Client.MainWindow.MainView;
 
 namespace DataPeersync.Client
 {
@@ -16,7 +17,7 @@ namespace DataPeersync.Client
 		{
 			if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
 			{
-				desktop.MainWindow = new MainWindow
+				desktop.MainWindow = new MainWindow.MainWindow
 				{
 					DataContext = new MainViewModel()
 				};

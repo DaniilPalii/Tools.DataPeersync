@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace DataPeersync.Client.Main
+namespace DataPeersync.Client.MainWindow
 {
 	public partial class MainWindow : Window
 	{

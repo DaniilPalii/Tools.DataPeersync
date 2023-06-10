@@ -1,11 +1,11 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace DataPeersync.Client.Main.MainMenu
+namespace DataPeersync.Client.MainWindow.FileReceiving
 {
-	public partial class MainMenuView : UserControl
+	public partial class FileReceivingView : UserControl
 	{
-		public MainMenuView()
+		public FileReceivingView()
 		{
 			InitializeComponent();
 		}

@@ -1,11 +1,11 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace DataPeersync.Client.Main.FileReceiving
+namespace DataPeersync.Client.MainWindow.FileSending
 {
-	public partial class FileReceivingView : UserControl
+	public partial class FileSendingView : UserControl
 	{
-		public FileReceivingView()
+		public FileSendingView()
 		{
 			InitializeComponent();
 		}
