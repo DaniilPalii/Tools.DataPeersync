@@ -1,23 +1,38 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			xmlns:fileSending="clr-namespace:DataPeersync.Client.MainWindow.FileSending"
-			mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-			x:Class="DataPeersync.Client.MainWindow.FileSending.FileSendingView"
+<UserControl
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:DataPeersync.Client.MainWindow.FileSending"
+	mc:Ignorable="d"
+	d:DesignWidth="800"
+	d:DesignHeight="450"
+	x:Class="DataPeersync.Client.MainWindow.FileSending.FileSendingView"
 >
 	<Design.DataContext>
-		<fileSending:FileSendingViewModel />
+		<local:FileSendingViewModel />
 	</Design.DataContext>
-	
+
 	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-		<TextBlock>File sending</TextBlock>
-		<Button 
+		<TextBlock Text="File sending" FontWeight="Bold" />
+		<WrapPanel>
+			<TextBlock Text="Ip address: " />
+			<TextBox Text="{Binding IpAddress}" />
+		</WrapPanel>
+		<WrapPanel>
+			<TextBlock Text="Port: " />
+			<TextBox Text="{Binding Port}" />
+		</WrapPanel>
+		<WrapPanel>
+			<TextBlock Text="File path: " />
+			<TextBox Text="{Binding FilePath}" />
+		</WrapPanel>
+		<Button
 			Name="BackToMenuButton"
 			Content="Back to menu"
 			Command="{Binding Navigator.GoToMainMenu}"
 		/>
-		<Button Name="SendFileButton">Send file</Button>
+		<Button Name="SendFileButton" Command="{Binding Send}">Send file</Button>
+		<TextBlock Text="{Binding Status}" />
 	</StackPanel>
 </UserControl>
-

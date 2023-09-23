@@ -15,7 +15,5 @@
 		<mainWindow:MainViewModel />
 	</Design.DataContext>
 	
-	<ContentControl 
-		Content="{Binding Content}"
-	/>
+	<ContentControl Content="{Binding Content}"	/>
 </UserControl>
