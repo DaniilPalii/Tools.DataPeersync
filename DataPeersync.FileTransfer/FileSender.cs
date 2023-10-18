@@ -58,7 +58,7 @@ namespace DataPeersync.FileTransfer
 
 		private static async Task SendAsync(string value, Socket socket, CancellationToken cancellationToken)
 		{
-			var bytes = Encoding.UTF8.GetBytes(value);
+			var bytes = Configuration.Encoding.GetBytes(value);
 			await SendAsync(bytes.Length, socket, cancellationToken);
 			await socket.SendAsync(bytes, cancellationToken);
 		}

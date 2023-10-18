@@ -53,7 +53,7 @@ namespace DataPeersync.FileTransfer
 		{
 			var bytes = await ReceiveBytesAsync(socket, cancellationToken);
 			
-			return Encoding.UTF8.GetString(bytes);
+			return Configuration.Encoding.GetString(bytes);
 		}
 		
 		private static async Task<byte[]> ReceiveBytesAsync(Socket socket, CancellationToken cancellationToken)
