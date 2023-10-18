@@ -33,7 +33,7 @@ namespace DataPeersync.FileTransfer
 			if (fileSizeInBytes == 0)
 				return filePath;
 
-			var buffer = new byte[ChunkSize].AsMemory();
+			var buffer = new byte[Configuration.ChunkSize].AsMemory();
 			var bytesToReceiveNumber = fileSizeInBytes;
 			
 			do
@@ -84,7 +84,5 @@ namespace DataPeersync.FileTransfer
 			
 			return bytes;
 		}
-		
-		private const int ChunkSize = 4096; // TODO: check if chunk size should be same for sender and receiver; if yes - move it shared class
 	}
 }

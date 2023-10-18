@@ -36,7 +36,7 @@ namespace DataPeersync.FileTransfer
 			if (file.Length == 0)
 				return;
 			
-			var buffer = new byte[ChunkSize].AsMemory();
+			var buffer = new byte[Configuration.ChunkSize].AsMemory();
 			var bytesToSendNumber = file.Length;
 
 			do
@@ -74,7 +74,5 @@ namespace DataPeersync.FileTransfer
 			var bytes = BitConverter.GetBytes(value);
 			await socket.SendAsync(bytes, cancellationToken);
 		}
-
-		private const int ChunkSize = 4096;
 	}
 }
