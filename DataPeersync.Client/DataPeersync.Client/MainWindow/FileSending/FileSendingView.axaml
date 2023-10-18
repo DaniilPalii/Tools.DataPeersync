@@ -17,7 +17,7 @@
 		<TextBlock Text="File sending" FontWeight="Bold" />
 		<WrapPanel>
 			<TextBlock Text="Ip address: " />
-			<TextBox Text="{Binding IpAddress}" />
+			<TextBox Text="{Binding IpString}" />
 		</WrapPanel>
 		<WrapPanel>
 			<TextBlock Text="Port: " />
@@ -30,7 +30,7 @@
 		<Button
 			Name="BackToMenuButton"
 			Content="Back to menu"
-			Command="{Binding Navigator.GoToMainMenu}"
+			Command="{Binding GoToMainMenu}"
 		/>
 		<Button Name="SendFileButton" Command="{Binding Send}">Send file</Button>
 		<TextBlock Text="{Binding Status}" />

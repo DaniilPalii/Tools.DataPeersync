@@ -1,75 +1,82 @@
-using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using DataPeersync.Client.FileTransfer;
-using File = DataPeersync.FileTransfer.File;
 
 namespace DataPeersync.FileTransfer
 {
-	public class FileReceiver
+	public static class FileReceiver
 	{
-		public async Task<File> ReceiveAsync(int port)
+		public static async Task<string> ReceiveAsync(int port, string directoryPath, CancellationToken cancellationToken)
 		{
-			Logger.Log("Start receiving...");
-			
-			using var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-			socket.Bind(new IPEndPoint(IPAddress.Any, port));
-			socket.Listen(1);
-			Logger.Log($"Listening port {port} with socket {socket.Handle}.");
+			using var listeningSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+			listeningSocket.Bind(new IPEndPoint(IPAddress.Any, port));
+			listeningSocket.Listen(backlog: 1);
 
-			using var clientSocket = await socket.AcceptAsync();
-			Logger.Log($"Accepting connection with socket {clientSocket.Handle}.");
+			using var clientSocket = await listeningSocket.AcceptAsync(cancellationToken);
+			// TODO: Test closing of listeningSocket here
 
-			// var file = new File
-			// {
-			// 	Name = await ReceiveStringAsync(clientSocket),
-			// 	ContentBytes = await ReceiveBytesAsync(clientSocket)
-			// };
+			var fileName = await ReceiveStringAsync(clientSocket, cancellationToken);
+			var receivedFilePath = await ReceiveFileAsync(clientSocket, fileName, directoryPath, cancellationToken);
 
-			var buffer = await ReceiveBytesAsync(clientSocket);
-			var file = File.FromBytes(buffer);
+			// TODO: check if socket shutdown required
 
-			clientSocket.Close();
-			socket.Close();
-			Logger.Log("Sockets are closed.");
-			Logger.Log("Receiving is finished.");
-
-			return file;
+			return receivedFilePath;
 		}
 
-		private static async Task<string> ReceiveStringAsync(Socket clientSocket)
+		private static async Task<string> ReceiveFileAsync(Socket socket, string name, string directoryPath, CancellationToken cancellationToken)
 		{
-			var bytes = await ReceiveBytesAsync(clientSocket);
+			var filePath = Path.Combine(directoryPath, name);
+			await using var file = new FileStream(filePath, FileMode.Create);
+
+			var fileSizeInBytes = await ReceiveLongAsync(socket, cancellationToken);
+
+			if (fileSizeInBytes == 0)
+				return filePath;
 			
-			return Encoding.Unicode.GetString(bytes);
+			var bytes = await ReceiveBytesAsync(socket, (int)fileSizeInBytes, cancellationToken); // TODO: do in loop
+			await file.WriteAsync(bytes, cancellationToken);
+
+			// TODO: check if flush required
+
+			return filePath;
+		}
+
+		private static async Task<string> ReceiveStringAsync(Socket socket, CancellationToken cancellationToken)
+		{
+			var bytes = await ReceiveBytesAsync(socket, cancellationToken);
+			
+			return Encoding.UTF8.GetString(bytes);
 		}
 		
-		private static async Task<byte[]> ReceiveBytesAsync(Socket clientSocket)
+		private static async Task<byte[]> ReceiveBytesAsync(Socket socket, CancellationToken cancellationToken)
 		{
-			var bytesNumber = await ReceiveIntAsync(clientSocket);
-			Logger.Log($"Received string bytes length: {bytesNumber}.");
-			
-			var value = await ReceiveBytesAsync(clientSocket, bytesNumber);
-			Logger.Log($"Received string: {value}.");
-			
-			return value;
+			var bytesNumber = await ReceiveIntAsync(socket, cancellationToken);
+		
+			return await ReceiveBytesAsync(socket, bytesNumber, cancellationToken);
 		}
 
-		private static async Task<int> ReceiveIntAsync(Socket clientSocket)
+		private static async Task<int> ReceiveIntAsync(Socket clientSocket, CancellationToken cancellationToken)
 		{
-			var bytes = await ReceiveBytesAsync(clientSocket, bytesNumber: sizeof(int));
+			var bytes = await ReceiveBytesAsync(clientSocket, bytesNumber: sizeof(int), cancellationToken);
 			
 			return BitConverter.ToInt32(bytes);
 		}
 
-		private static async Task<byte[]> ReceiveBytesAsync(Socket clientSocket, int bytesNumber)
+		private static async Task<long> ReceiveLongAsync(Socket socket, CancellationToken cancellationToken)
+		{
+			var bytes = await ReceiveBytesAsync(socket, bytesNumber: sizeof(long), cancellationToken);
+			
+			return BitConverter.ToInt64(bytes);
+		}
+
+		private static async Task<byte[]> ReceiveBytesAsync(Socket socket, int bytesNumber, CancellationToken cancellationToken)
 		{
 			var bytes = new byte[bytesNumber];
-			var receivedBytesNumber = await clientSocket.ReceiveAsync(bytes);
-			Debug.WriteLine($"Received {receivedBytesNumber} bytes of {bytesNumber}");
+			await socket.ReceiveAsync(bytes, cancellationToken);
 			
 			return bytes;
 		}
+		
+		private const int ChunkSize = 4096; // TODO: check if chunk size should be same for sender and receiver; if yes - move it shared class
 	}
 }

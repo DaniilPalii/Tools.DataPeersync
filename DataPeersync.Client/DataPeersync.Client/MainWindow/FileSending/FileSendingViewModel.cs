@@ -1,3 +1,6 @@
+using System;
+using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using DataPeersync.FileTransfer;
 using ReactiveUI;
@@ -8,7 +11,7 @@ namespace DataPeersync.Client.MainWindow.FileSending
 	{
 		public INavigator Navigator { init; get; }
 		
-		public string? IpAddress { get; set; }
+		public string? IpString { get; set; }
 		
 		public int? Port { get; set; }
 		
@@ -22,16 +25,48 @@ namespace DataPeersync.Client.MainWindow.FileSending
 
 		public async Task Send()
 		{
-			if (IpAddress is null || Port is null || FilePath is null)
+			if (IpString is null || Port is null || FilePath is null)
 			{
 				Status = "Fill all parameters";
 				return;
 			}
 
-			Status = "Sending..."; 
-			await new FileSender().SendAsync(FilePath, IpAddress, Port.Value);
-			Status = "Sent";
+			var isIpValid = IPAddress.TryParse(IpString, out var ip);
+
+			if (!isIpValid)
+			{
+				Status = "IP is invalid";
+				return;
+			}
+			
+			Status = "Sending...";
+
+			var cancellationTokenSource = new CancellationTokenSource();
+			OnExit += () => cancellationTokenSource.Cancel();
+
+			try
+			{
+				await FileSender.SendAsync(
+					FilePath,
+					new IPEndPoint(ip, Port.Value),
+					timeout: TimeSpan.FromMinutes(10),
+					cancellationTokenSource.Token);
+				
+				Status = "Sent";
+			}
+			catch (Exception exception)
+			{
+				Status = $"Failed. {exception}";
+			}
 		}
+	
+		public void GoToMainMenu()
+		{
+			OnExit?.Invoke();
+			Navigator.GoToMainMenu();
+		}
+
+		private event Action? OnExit;
 		
 		private string status = string.Empty;
 	}

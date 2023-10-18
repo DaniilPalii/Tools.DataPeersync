@@ -1,8 +1,8 @@
-using System.IO;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 using DataPeersync.FileTransfer;
 using ReactiveUI;
-using File = DataPeersync.FileTransfer.File;
 
 namespace DataPeersync.Client.MainWindow.FileReceiving
 {
@@ -22,16 +22,20 @@ namespace DataPeersync.Client.MainWindow.FileReceiving
 		public async Task Receive()
 		{
 			Status = "Receiving...";
-			ReceivedFile = await receiver.ReceiveAsync(Port);
-			Status = $"Received file \"{ReceivedFile.Name}\". Saving...";
-			await new FileSaver().SaveAsync(
-				Path.Combine(@"D:\Inbox\DataPeersync", ReceivedFile.Name),
-				ReceivedFile.ContentBytes);
-		}
 
-		private File? ReceivedFile { get; set; }
+			try
+			{
+				var cancellationTokenSource = new CancellationTokenSource();
+				var receivedFilePath = await FileReceiver.ReceiveAsync(Port, @"D:\Inbox\DataPeersync", cancellationTokenSource.Token);
+
+				Status = $"Received {receivedFilePath}";
+			}
+			catch (Exception exception)
+			{
+				Status = $"Failed. {exception}";
+			}
+		}
 		
 		private string status = string.Empty;
-		private readonly FileReceiver receiver = new();
 	}
 }
