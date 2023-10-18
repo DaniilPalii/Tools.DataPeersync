@@ -32,9 +32,17 @@ namespace DataPeersync.FileTransfer
 
 			if (fileSizeInBytes == 0)
 				return filePath;
+
+			var buffer = new byte[ChunkSize].AsMemory();
+			var bytesToReceiveNumber = fileSizeInBytes;
 			
-			var bytes = await ReceiveBytesAsync(socket, (int)fileSizeInBytes, cancellationToken); // TODO: do in loop
-			await file.WriteAsync(bytes, cancellationToken);
+			do
+			{
+				var receivedBytesNumber = await socket.ReceiveAsync(buffer, cancellationToken);
+				await file.WriteAsync(buffer[..receivedBytesNumber], cancellationToken);
+				bytesToReceiveNumber -= receivedBytesNumber;
+			}
+			while (bytesToReceiveNumber > 0);
 
 			// TODO: check if flush required
 
