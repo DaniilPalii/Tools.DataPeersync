@@ -1,23 +1,31 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			xmlns:fileReceiving="clr-namespace:DataPeersync.Client.MainWindow.FileReceiving"
-			mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-			x:Class="DataPeersync.Client.MainWindow.FileReceiving.FileReceivingView"
+<UserControl
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:DataPeersync.Client.MainWindow.FileReceiving"
+	mc:Ignorable="d"
+	d:DesignWidth="800"
+	d:DesignHeight="450"
+	x:Class="DataPeersync.Client.MainWindow.FileReceiving.FileReceivingView"
 >
 	<Design.DataContext>
-		<fileReceiving:FileReceivingViewModel />
+		<local:FileReceivingViewModel />
 	</Design.DataContext>
-	
+
 	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-		<TextBlock>File receiving</TextBlock>
+		<TextBlock Text="File receiving" FontWeight="Bold" />
+		<WrapPanel>
+			<TextBlock Text="Port: " />
+			<TextBlock Text="{Binding Port}" />
+		</WrapPanel>
 		<Button 
 			Name="BackToMenuButton"
 			Content="Back to menu"
 			Command="{Binding Navigator.GoToMainMenu}"
 		/>
-		<Button Name="ReceiveFileButton">Receive file</Button>
+		<Button Name="ReceiveFileButton" Command="{Binding Receive}">Receive file</Button>
+		<TextBlock Text="{Binding Status}" />
 	</StackPanel>
 </UserControl>
 

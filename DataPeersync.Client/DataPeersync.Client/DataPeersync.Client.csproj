@@ -33,4 +33,8 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataPeersync.FileTransfer\DataPeersync.FileTransfer.csproj" />
+  </ItemGroup>
 </Project>
