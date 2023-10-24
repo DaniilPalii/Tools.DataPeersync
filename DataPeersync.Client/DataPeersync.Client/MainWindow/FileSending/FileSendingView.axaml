@@ -4,10 +4,11 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:local="clr-namespace:DataPeersync.Client.MainWindow.FileSending"
+	x:Class="DataPeersync.Client.MainWindow.FileSending.FileSendingView"
+	x:DataType="local:FileSendingViewModel"
 	mc:Ignorable="d"
 	d:DesignWidth="800"
 	d:DesignHeight="450"
-	x:Class="DataPeersync.Client.MainWindow.FileSending.FileSendingView"
 >
 	<Design.DataContext>
 		<local:FileSendingViewModel />
