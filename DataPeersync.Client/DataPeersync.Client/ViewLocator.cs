@@ -6,7 +6,7 @@ namespace DataPeersync.Client
 {
 	public class ViewLocator : IDataTemplate
 	{
-		public IControl? Build(object? data)
+		public Control? Build(object? data)
 		{
 			if (data is null)
 				return null;
@@ -16,7 +16,7 @@ namespace DataPeersync.Client
 
 			return type != null
 				? (Control)Activator.CreateInstance(type)!
-				: (IControl)new TextBlock { Text = name };
+				: new TextBlock { Text = name };
 		}
 
 		public bool Match(object? data)

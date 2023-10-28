@@ -1,15 +1,12 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			xmlns:mainMenu="clr-namespace:DataPeersync.Client.MainWindow.MainMenu"
-			mc:Ignorable="d"
-			d:DesignWidth="800"
-			d:DesignHeight="450"
-			x:Class="DataPeersync.Client.MainWindow.MainMenu.MainMenuView"
+<UserControl
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:DataPeersync.Client.MainWindow.MainMenu"
+	x:Class="DataPeersync.Client.MainWindow.MainMenu.MainMenuView"
+	x:DataType="local:MainMenuViewModel"
 >
 	<Design.DataContext>
-		<mainMenu:MainMenuViewModel />
+		<local:MainMenuViewModel />
 	</Design.DataContext>
 	
 	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
