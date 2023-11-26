@@ -5,10 +5,6 @@
 	x:Class="DataPeersync.Client.MainWindow.FileReceiving.FileReceivingView"
 	x:DataType="local:FileReceivingViewModel"
 >
-	<Design.DataContext>
-		<local:FileReceivingViewModel />
-	</Design.DataContext>
-
 	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 		<TextBlock Text="File receiving" FontWeight="Bold" />
 		<WrapPanel>

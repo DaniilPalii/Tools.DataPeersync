@@ -3,12 +3,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using DataPeersync.FileTransfer;
 using ReactiveUI;
+using IServiceProvider = DataPeersync.Client.Services.ServiceProvider.IServiceProvider;
 
 namespace DataPeersync.Client.MainWindow.FileReceiving
 {
 	internal class FileReceivingViewModel : ViewModelBase
 	{
-		public INavigator Navigator { init; get; }
+		public FileReceivingViewModel(IServiceProvider serviceProvider, INavigator navigator) : base(serviceProvider)
+		{
+			Navigator = navigator;
+		}
+		
+		public INavigator Navigator { get; }
 
 		public int Port { get; }
 			= Ports.GetFirstAvailable();

@@ -5,10 +5,6 @@
 	x:Class="DataPeersync.Client.MainWindow.FileSending.FileSendingView"
 	x:DataType="local:FileSendingViewModel"
 >
-	<Design.DataContext>
-		<local:FileSendingViewModel />
-	</Design.DataContext>
-
 	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 		<TextBlock Text="File sending" FontWeight="Bold" />
 		<WrapPanel>
@@ -22,6 +18,7 @@
 		<WrapPanel>
 			<TextBlock Text="File path: " />
 			<TextBox Text="{Binding FilePath}" />
+			<Button Name="BrowseFileButton" Command="{Binding BrowseFile}">Browse file</Button>
 		</WrapPanel>
 		<Button
 			Name="BackToMenuButton"

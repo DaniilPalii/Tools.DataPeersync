@@ -4,24 +4,29 @@ using System.Threading;
 using System.Threading.Tasks;
 using DataPeersync.FileTransfer;
 using ReactiveUI;
+using Xamarin.Essentials;
+using IServiceProvider = DataPeersync.Client.Services.ServiceProvider.IServiceProvider;
 
 namespace DataPeersync.Client.MainWindow.FileSending
 {
 	internal class FileSendingViewModel : ViewModelBase
 	{
-		public INavigator Navigator { init; get; }
+		public FileSendingViewModel(IServiceProvider serviceProvider, INavigator navigator) : base(serviceProvider)
+		{
+			this.navigator = navigator;
+		}
 		
 		public string? IpString { get; set; }
 		
 		public int? Port { get; set; }
-		
+
 		public string? FilePath { get; set; }
 
 		public string Status
 		{
 			get => status;
 			private set => this.RaiseAndSetIfChanged(ref status, value);
-		} 
+		}
 
 		public async Task Send()
 		{
@@ -48,7 +53,7 @@ namespace DataPeersync.Client.MainWindow.FileSending
 			{
 				await FileSender.SendAsync(
 					FilePath,
-					new IPEndPoint(ip, Port.Value),
+					new IPEndPoint(ip!, Port.Value),
 					timeout: TimeSpan.FromMinutes(10),
 					cancellationTokenSource.Token);
 				
@@ -63,12 +68,21 @@ namespace DataPeersync.Client.MainWindow.FileSending
 		public void GoToMainMenu()
 		{
 			OnExit?.Invoke();
-			Navigator.GoToMainMenu();
+			navigator.GoToMainMenu();
+		}
+
+		public async void BrowseFile()
+		{
+			var file = await FilePicker.PickAsync();
+			FilePath = file?.FileName;
+			this.RaisePropertyChanged(nameof(FilePath));
 		}
 
 		private event Action? OnExit;
 		
 		private string status = string.Empty;
+
+		private readonly INavigator navigator;
 	}
 }
  

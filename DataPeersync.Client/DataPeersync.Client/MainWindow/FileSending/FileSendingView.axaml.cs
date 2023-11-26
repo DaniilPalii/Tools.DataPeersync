@@ -1,5 +1,4 @@
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
 namespace DataPeersync.Client.MainWindow.FileSending
 {
@@ -9,11 +8,5 @@ namespace DataPeersync.Client.MainWindow.FileSending
 		{
 			InitializeComponent();
 		}
-
-		private void InitializeComponent()
-		{
-			AvaloniaXamlLoader.Load(this);
-		}
 	}
 }
-

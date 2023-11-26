@@ -5,10 +5,6 @@
 	x:Class="DataPeersync.Client.MainWindow.MainMenu.MainMenuView"
 	x:DataType="local:MainMenuViewModel"
 >
-	<Design.DataContext>
-		<local:MainMenuViewModel />
-	</Design.DataContext>
-	
 	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 		<TextBlock>Main menu</TextBlock>
 		<Button 

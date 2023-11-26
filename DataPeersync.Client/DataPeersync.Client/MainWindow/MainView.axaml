@@ -5,9 +5,5 @@
 	x:Class="DataPeersync.Client.MainWindow.MainView"
 	x:DataType="local:MainViewModel"
 >
-	<Design.DataContext>
-		<local:MainViewModel />
-	</Design.DataContext>
-	
 	<ContentControl Content="{Binding Content}"	/>
 </UserControl>

@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using DataPeersync.Client.MainWindow;
-using MainView = DataPeersync.Client.MainWindow.MainView;
+using DataPeersync.Client.Services.ServiceProvider;
 
 namespace DataPeersync.Client
 {
@@ -15,19 +15,27 @@ namespace DataPeersync.Client
 
 		public override void OnFrameworkInitializationCompleted()
 		{
-			if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+			switch (ApplicationLifetime)
 			{
-				desktop.MainWindow = new MainWindow.MainWindow
+				case IClassicDesktopStyleApplicationLifetime desktop:
 				{
-					DataContext = new MainViewModel()
-				};
-			}
-			else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-			{
-				singleViewPlatform.MainView = new MainView
+					var mainWindow = new MainWindow.MainWindow();
+					mainWindow.DataContext = new MainViewModel(
+						new DesktopServiceProvider(mainWindow.StorageProvider));
+					desktop.MainWindow = mainWindow;
+					break;
+				}
+				case ISingleViewApplicationLifetime singleViewPlatform:
 				{
-					DataContext = new MainViewModel()
-				};
+					var mainView = new MainView
+					{
+						DataContext = new MainViewModel(
+							new AndroidServiceProvider()),
+					};
+					
+					singleViewPlatform.MainView = mainView;
+					break;
+				}
 			}
 
 			base.OnFrameworkInitializationCompleted();
