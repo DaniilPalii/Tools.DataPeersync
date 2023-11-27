@@ -3,16 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.Client", "DataPeersync.Client\DataPeersync.Client\DataPeersync.Client.csproj", "{E5D634B0-FDA7-4EAD-989B-A7A3C29F6260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.Client.Avalonia", "DataPeersync.Client.Avalonia\DataPeersync.Client.Avalonia.csproj", "{E5D634B0-FDA7-4EAD-989B-A7A3C29F6260}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.Client.Android", "DataPeersync.Client\DataPeersync.Client.Android\DataPeersync.Client.Android.csproj", "{85B0C8B0-8C51-46A8-8A4E-DEEFD4D596AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.Client.Avalonia.Android", "DataPeersync.Client.Avalonia.Android\DataPeersync.Client.Avalonia.Android.csproj", "{85B0C8B0-8C51-46A8-8A4E-DEEFD4D596AF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.Client.Desktop", "DataPeersync.Client\DataPeersync.Client.Desktop\DataPeersync.Client.Desktop.csproj", "{189880B4-0AE5-4670-90D0-8426ACB99389}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataPeersync.Client", "DataPeersync.Client", "{8B778EE6-3498-4480-8BA8-4F12CD7E94FE}"
-	ProjectSection(SolutionItems) = preProject
-		DataPeersync.Client\Directory.Build.props = DataPeersync.Client\Directory.Build.props
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.Client.Avalonia.Desktop", "DataPeersync.Client.Avalonia.Desktop\DataPeersync.Client.Avalonia.Desktop.csproj", "{189880B4-0AE5-4670-90D0-8426ACB99389}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPeersync.FileTransfer.Tests", "DataPeersync.FileTransfer.Tests\DataPeersync.FileTransfer.Tests.csproj", "{A93E1F87-222B-4AB7-B999-54B2AAA54065}"
 EndProject
@@ -51,9 +46,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E5D634B0-FDA7-4EAD-989B-A7A3C29F6260} = {8B778EE6-3498-4480-8BA8-4F12CD7E94FE}
-		{85B0C8B0-8C51-46A8-8A4E-DEEFD4D596AF} = {8B778EE6-3498-4480-8BA8-4F12CD7E94FE}
-		{189880B4-0AE5-4670-90D0-8426ACB99389} = {8B778EE6-3498-4480-8BA8-4F12CD7E94FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6DB25013-AB21-4364-8CBE-4656D28C0268}
