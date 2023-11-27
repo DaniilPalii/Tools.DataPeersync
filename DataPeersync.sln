@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPeersync.FileTransfer.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPeersync.FileTransfer", "DataPeersync.FileTransfer\DataPeersync.FileTransfer.csproj", "{0A4BF7EA-75D2-4E38-8723-404B12613F41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPeersync.Client.Maui", "DataPeersync.Client.Maui\DataPeersync.Client.Maui.csproj", "{3496F0DD-21D2-409F-9757-AB12F4CB149A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{0A4BF7EA-75D2-4E38-8723-404B12613F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A4BF7EA-75D2-4E38-8723-404B12613F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A4BF7EA-75D2-4E38-8723-404B12613F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3496F0DD-21D2-409F-9757-AB12F4CB149A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3496F0DD-21D2-409F-9757-AB12F4CB149A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3496F0DD-21D2-409F-9757-AB12F4CB149A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3496F0DD-21D2-409F-9757-AB12F4CB149A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
