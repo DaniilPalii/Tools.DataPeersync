@@ -35,6 +35,12 @@
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
 
+			<Button
+				x:Name="BrowseFileBtn"
+				Text="Browse file"
+				Clicked="BrowseFile"
+				HorizontalOptions="Center"></Button>
+
         </VerticalStackLayout>
     </ScrollView>
 
