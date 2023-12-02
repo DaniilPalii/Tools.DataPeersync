@@ -1,10 +1,11 @@
 ﻿using Foundation;
 
-namespace DataPeersync.Client.Maui;
-
-[Register("AppDelegate")]
-public class AppDelegate : MauiUIApplicationDelegate
+namespace DataPeersync.Client.Maui
 {
-	protected override MauiApp CreateMauiApp()
-		=> MauiProgram.CreateMauiApp();
+	[Register("AppDelegate")]
+	public class AppDelegate : MauiUIApplicationDelegate
+	{
+		protected override MauiApp CreateMauiApp()
+			=> MauiProgram.CreateMauiApp();
+	}
 }

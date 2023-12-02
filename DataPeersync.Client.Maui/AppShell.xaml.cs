@@ -1,9 +1,10 @@
-﻿namespace DataPeersync.Client.Maui;
-
-public partial class AppShell : Shell
+﻿namespace DataPeersync.Client.Maui
 {
-	public AppShell()
+	public partial class AppShell : Shell
 	{
-		InitializeComponent();
+		public AppShell()
+		{
+			InitializeComponent();
+		}
 	}
 }

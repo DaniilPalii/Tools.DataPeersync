@@ -1,28 +1,29 @@
-﻿namespace DataPeersync.Client.Maui;
-
-public partial class MainPage : ContentPage
+﻿namespace DataPeersync.Client.Maui
 {
-	int count = 0;
-
-	public MainPage()
+	public partial class MainPage : ContentPage
 	{
-		InitializeComponent();
-	}
+		int count = 0;
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+		public MainPage()
+		{
+			InitializeComponent();
+		}
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+		private void OnCounterClicked(object sender, EventArgs e)
+		{
+			count++;
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+			if (count == 1)
+				CounterBtn.Text = $"Clicked {count} time";
+			else
+				CounterBtn.Text = $"Clicked {count} times";
 
-	private async void BrowseFile(object sender, EventArgs e)
-	{
-		await FilePicker.Default.PickAsync();
+			SemanticScreenReader.Announce(CounterBtn.Text);
+		}
+
+		private async void BrowseFile(object sender, EventArgs e)
+		{
+			await FilePicker.Default.PickAsync();
+		}
 	}
 }

@@ -1,11 +1,12 @@
-﻿namespace DataPeersync.Client.Maui;
-
-public partial class App : Application
+﻿namespace DataPeersync.Client.Maui
 {
-	public App()
+	public partial class App : Application
 	{
-		InitializeComponent();
+		public App()
+		{
+			InitializeComponent();
 
-		MainPage = new AppShell();
+			MainPage = new AppShell();
+		}
 	}
 }
