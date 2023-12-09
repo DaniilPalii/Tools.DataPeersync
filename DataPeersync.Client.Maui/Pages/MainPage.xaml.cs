@@ -1,4 +1,4 @@
-﻿namespace DataPeersync.Client.Maui
+﻿namespace DataPeersync.Client.Maui.Pages
 {
 	public partial class MainPage : ContentPage
 	{
