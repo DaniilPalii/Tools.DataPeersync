@@ -1,0 +1,24 @@
+<?xml
+	version="1.0"
+	encoding="utf-8"?>
+
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="DataPeersync.Client.Maui.Pages.ReceiveFilePage"
+	Title="Receive File">
+
+	<ScrollView>
+		<VerticalStackLayout
+			Spacing="25"
+			Padding="30,0"
+			VerticalOptions="Center"
+			HorizontalOptions="Center">
+
+			<Label x:Name="PortLabel" />
+			<Button x:Name="ReceiveFileButton" Text="Receive File" />
+			<Label x:Name="StatusLabel" />
+
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>

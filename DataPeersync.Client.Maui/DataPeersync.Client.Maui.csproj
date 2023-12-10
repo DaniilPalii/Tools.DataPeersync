@@ -65,4 +65,8 @@
 	  </Compile>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\DataPeersync.FileTransfer\DataPeersync.FileTransfer.csproj" />
+	</ItemGroup>
+
 </Project>

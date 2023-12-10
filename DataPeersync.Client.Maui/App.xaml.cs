@@ -1,12 +1,15 @@
-﻿namespace DataPeersync.Client.Maui
+﻿using DataPeersync.Client.Maui.Pages;
+
+namespace DataPeersync.Client.Maui
 {
-	public partial class App : Application
+	public partial class App
 	{
 		public App()
 		{
 			InitializeComponent();
 
-			MainPage = new AppShell();
+			MainPage = new NavigationPage(
+				new MainPage());
 		}
 
 		protected override Window CreateWindow(IActivationState activationState)
