@@ -1,6 +1,5 @@
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 
 namespace DataPeersync.FileTransfer
 {
@@ -35,7 +34,7 @@ namespace DataPeersync.FileTransfer
 
 			var buffer = new byte[Configuration.ChunkSize].AsMemory();
 			var bytesToReceiveNumber = fileSizeInBytes;
-			
+
 			do
 			{
 				var receivedBytesNumber = await socket.ReceiveAsync(buffer, cancellationToken);
@@ -52,28 +51,28 @@ namespace DataPeersync.FileTransfer
 		private static async Task<string> ReceiveStringAsync(Socket socket, CancellationToken cancellationToken)
 		{
 			var bytes = await ReceiveBytesAsync(socket, cancellationToken);
-			
+
 			return Configuration.Encoding.GetString(bytes);
 		}
-		
+
 		private static async Task<byte[]> ReceiveBytesAsync(Socket socket, CancellationToken cancellationToken)
 		{
 			var bytesNumber = await ReceiveIntAsync(socket, cancellationToken);
-		
+
 			return await ReceiveBytesAsync(socket, bytesNumber, cancellationToken);
 		}
 
 		private static async Task<int> ReceiveIntAsync(Socket clientSocket, CancellationToken cancellationToken)
 		{
 			var bytes = await ReceiveBytesAsync(clientSocket, bytesNumber: sizeof(int), cancellationToken);
-			
+
 			return BitConverter.ToInt32(bytes);
 		}
 
 		private static async Task<long> ReceiveLongAsync(Socket socket, CancellationToken cancellationToken)
 		{
 			var bytes = await ReceiveBytesAsync(socket, bytesNumber: sizeof(long), cancellationToken);
-			
+
 			return BitConverter.ToInt64(bytes);
 		}
 
@@ -81,7 +80,7 @@ namespace DataPeersync.FileTransfer
 		{
 			var bytes = new byte[bytesNumber];
 			await socket.ReceiveAsync(bytes, cancellationToken);
-			
+
 			return bytes;
 		}
 	}

@@ -1,4 +1,4 @@
-namespace DataPeersync.Client.Maui.Pages
+namespace DataPeersync.Client.Maui.Pages.SendFile
 {
 	public partial class SendFilePage
 	{

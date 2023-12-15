@@ -1,6 +1,6 @@
 using DataPeersync.FileTransfer;
 
-namespace DataPeersync.Client.Maui.Pages
+namespace DataPeersync.Client.Maui.Pages.ReceiveFile
 {
 	public partial class ReceiveFilePage
 	{

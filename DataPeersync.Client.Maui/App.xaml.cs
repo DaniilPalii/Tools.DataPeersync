@@ -1,4 +1,4 @@
-﻿using DataPeersync.Client.Maui.Pages;
+﻿using DataPeersync.Client.Maui.Pages.Main;
 
 namespace DataPeersync.Client.Maui
 {

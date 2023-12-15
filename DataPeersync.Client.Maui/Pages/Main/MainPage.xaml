@@ -5,7 +5,9 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="DataPeersync.Client.Maui.Pages.MainPage"
+	xmlns:main="clr-namespace:DataPeersync.Client.Maui.Pages.Main"
+	x:Class="DataPeersync.Client.Maui.Pages.Main.MainPage"
+	x:DataType="main:MainPageModel"
 	Title="Data Peersync">
 
 	<ScrollView>
@@ -28,12 +30,12 @@
 			<Button
 				x:Name="SendFileButton"
 				Text="Send file"
-				Clicked="SendFileButton_OnClicked" />
+				Command="{Binding NavigateToSendFilePageCommand}" />
 
 			<Button
 				x:Name="ReceiveFileButton"
 				Text="Receive file"
-				Clicked="ReceiveFileButton_OnClicked" />
+				Command="{Binding NavigateToReceiveFilePageCommand}" />
 
 		</VerticalStackLayout>
 	</ScrollView>
