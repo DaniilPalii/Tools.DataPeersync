@@ -10,6 +10,7 @@ namespace DataPeersync.Client.Maui.Pages
 
 			ReceiveFileButton.Clicked += async (_, _) => await ReceiveFile();
 
+			ObtainIp();
 			ObtainPort();
 		}
 
@@ -32,10 +33,16 @@ namespace DataPeersync.Client.Maui.Pages
 			}
 		}
 
+		private void ObtainIp()
+		{
+			IpLabel.Text = IpAddresses.GetDefaultSwitch()?.ToString()
+			    ?? "No IP";
+		}
+
 		private void ObtainPort()
 		{
 			port = Ports.GetFirstAvailable();
-			PortLabel.Text = $"Port: {port}";
+			PortLabel.Text = port.ToString();
 		}
 
 		private void SetStatus(string status)

@@ -3,7 +3,7 @@ using System.Net;
 namespace DataPeersync.FileTransfer.Tests
 {
 	[TestFixture]
-	internal class IntegrationTests
+	public class IntegrationTests
 	{
 		[SetUp]
 		public async Task Setup()
@@ -19,7 +19,7 @@ namespace DataPeersync.FileTransfer.Tests
 		{
 			Directory.Delete(TemporaryTestDirectory, recursive: true);
 		}
-		
+
 		[Test]
 		public async Task Test()
 		{
@@ -45,7 +45,7 @@ namespace DataPeersync.FileTransfer.Tests
 			var receivedContent = await File.ReadAllTextAsync(receivedFilePath);
 			Assert.That(receivedContent, Is.EqualTo(originalContent));
 		}
-	
+
 		private const string TemporaryTestDirectory = "TestTemp";
 		private const string SampleDirectoryPath = $"{TemporaryTestDirectory}/Samples";
 		private const string ReceivedDirectoryPath = $"{TemporaryTestDirectory}/Received";

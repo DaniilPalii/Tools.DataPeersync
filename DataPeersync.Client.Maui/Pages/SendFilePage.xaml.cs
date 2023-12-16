@@ -29,6 +29,8 @@ namespace DataPeersync.Client.Maui.Pages
 
 		private async Task SendFile()
 		{
+			// PermissionStatus statusread = await Permissions.RequestAsync<Permissions.StorageRead>();
+
 			if (!IPAddress.TryParse(ip, out var parsedIp))
 			{
 				SetStatus("IP is invalid");
@@ -46,7 +48,18 @@ namespace DataPeersync.Client.Maui.Pages
 			var cancellationTokenSource = new CancellationTokenSource();
 			Disappearing += (_, _) => cancellationTokenSource.Cancel();
 
-			await FileSender.SendAsync(filePath, ipEndPoint, TimeSpan.FromSeconds(15), cancellationTokenSource.Token);
+			SetStatus("Sending file...");
+
+			try
+			{
+				await FileSender.SendAsync(filePath, ipEndPoint, TimeSpan.FromSeconds(30), cancellationTokenSource.Token);
+			}
+			catch (Exception e)
+			{
+				SetStatus($"Failed {e.Message}");
+			}
+
+			SetStatus("Sent");
 		}
 
 		private void SetStatus(string status)

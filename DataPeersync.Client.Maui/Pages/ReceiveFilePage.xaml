@@ -15,8 +15,18 @@
 			VerticalOptions="Center"
 			HorizontalOptions="Center">
 
-			<Label x:Name="PortLabel" />
+			<HorizontalStackLayout Spacing="2">
+				<Label Text="IP:" />
+				<Label x:Name="IpLabel" />
+			</HorizontalStackLayout>
+
+			<HorizontalStackLayout Spacing="2">
+				<Label Text="Port:" />
+				<Label x:Name="PortLabel" />
+			</HorizontalStackLayout>
+
 			<Button x:Name="ReceiveFileButton" Text="Receive File" />
+
 			<Label x:Name="StatusLabel" />
 
 		</VerticalStackLayout>
