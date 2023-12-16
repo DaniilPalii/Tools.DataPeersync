@@ -1,3 +1,6 @@
+using System.Net;
+using DataPeersync.FileTransfer;
+
 namespace DataPeersync.Client.Maui.Pages
 {
 	public partial class SendFilePage
@@ -6,17 +9,54 @@ namespace DataPeersync.Client.Maui.Pages
 		{
 			InitializeComponent();
 
-			IpEntry.TextChanged += OnIpEntryOnTextChanged;
+			IpEntry.TextChanged += (_, args) => ip = args.NewTextValue;
 			PortEntry.TextChanged += (_, args) => port = args.NewTextValue;
+
+			BrowseButton.Clicked += async (_, _) => await BrowseFile();
+			SendFileButton.Clicked += async (_, _) => await SendFile();
 		}
 
-		private void OnIpEntryOnTextChanged(object _, TextChangedEventArgs args)
+		private async Task BrowseFile()
 		{
-			Ip = args.NewTextValue;
+			var result = await FilePicker.Default.PickAsync();
+
+			if (result != null)
+			{
+				filePath = result.FullPath;
+				FilePathLabel.Text = filePath;
+			}
 		}
 
-		public string Ip { get; set; }
+		private async Task SendFile()
+		{
+			if (!IPAddress.TryParse(ip, out var parsedIp))
+			{
+				SetStatus("IP is invalid");
+				return;
+			}
+
+			if (!int.TryParse(port, out var parsedPort))
+			{
+				SetStatus("Port is invalid");
+				return;
+			}
+
+			var ipEndPoint = new IPEndPoint(parsedIp, parsedPort);
+
+			var cancellationTokenSource = new CancellationTokenSource();
+			Disappearing += (_, _) => cancellationTokenSource.Cancel();
+
+			await FileSender.SendAsync(filePath, ipEndPoint, TimeSpan.FromSeconds(15), cancellationTokenSource.Token);
+		}
+
+		private void SetStatus(string status)
+		{
+			StatusLabel.Text = status;
+		}
+
+		private string ip;
 		private string port;
+		private string filePath;
 	}
 }
 

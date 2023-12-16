@@ -8,8 +8,9 @@ namespace DataPeersync.Client.Maui.Pages
 		{
 			InitializeComponent();
 
-			ObtainPort();
 			ReceiveFileButton.Clicked += async (_, _) => await ReceiveFile();
+
+			ObtainPort();
 		}
 
 		private async Task ReceiveFile()
@@ -19,6 +20,8 @@ namespace DataPeersync.Client.Maui.Pages
 			try
 			{
 				var cancellationTokenSource = new CancellationTokenSource();
+				Disappearing += (_, _) => cancellationTokenSource.Cancel();
+
 				var receivedFilePath = await FileReceiver.ReceiveAsync(port, @"D:\Inbox\DataPeersync", cancellationTokenSource.Token);
 
 				SetStatus($"Received {receivedFilePath}");
