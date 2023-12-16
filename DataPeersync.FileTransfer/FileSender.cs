@@ -10,11 +10,9 @@ namespace DataPeersync.FileTransfer
 		{
 			await using var file = new FileStream(path, FileMode.Open);
 			var fileName = Path.GetFileName(path);
-			
-			using var socket = new Socket(endpoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp)
-			{
-				SendTimeout = timeout.Milliseconds,
-			};
+
+			using var socket = new Socket(endpoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+			socket.SendTimeout = timeout.Milliseconds;
 
 			try
 			{
@@ -35,17 +33,17 @@ namespace DataPeersync.FileTransfer
 
 			if (file.Length == 0)
 				return;
-			
+
 			var buffer = new byte[Configuration.ChunkSize].AsMemory();
 			var bytesToSendNumber = file.Length;
 
 			do
 			{
 				var readBytesNumber = await file.ReadAsync(buffer, cancellationToken);
-				
+
 				if (readBytesNumber == 0)
 					throw new Exception($"Error in reading the file. Read {readBytesNumber} bytes but there are {bytesToSendNumber} bytes left to send."); // TODO: create custom exception
-				
+
 				var sentBytesNumber = await socket.SendAsync(buffer[..readBytesNumber], cancellationToken);
 
 				if (sentBytesNumber != readBytesNumber) // TODO: check if "!=" should be changed to "<"

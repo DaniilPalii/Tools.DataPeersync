@@ -1,0 +1,21 @@
+<UserControl
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:DataPeersync.Client.Avalonia.MainWindow.MainMenu"
+	x:Class="DataPeersync.Client.Avalonia.MainWindow.MainMenu.MainMenuView"
+	x:DataType="local:MainMenuViewModel"
+>
+	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+		<TextBlock>Main menu</TextBlock>
+		<Button
+			Name="SendFileButton"
+			Content="Send file"
+			Command="{Binding Navigator.GoToFileSending}"
+		/>
+		<Button
+			Name="ReceiveFileButton"
+			Content="Receive file"
+			Command="{Binding Navigator.GoToFileReceiving}"
+		/>
+	</StackPanel>
+</UserControl>
