@@ -72,4 +72,3 @@ namespace DataPeersync.Client.Maui.Pages
 		private string filePath;
 	}
 }
-

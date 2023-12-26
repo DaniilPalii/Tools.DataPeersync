@@ -36,7 +36,7 @@ namespace DataPeersync.Client.Maui.Pages
 		private void ObtainIp()
 		{
 			IpLabel.Text = IpAddresses.GetDefaultSwitch()?.ToString()
-			    ?? "No IP";
+				?? "No IP";
 		}
 
 		private void ObtainPort()
@@ -53,4 +53,3 @@ namespace DataPeersync.Client.Maui.Pages
 		private int port;
 	}
 }
-
