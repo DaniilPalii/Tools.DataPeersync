@@ -7,20 +7,23 @@
 	Title="Send File">
 
 	<ScrollView>
-		<VerticalStackLayout
-			Spacing="10"
-			VerticalOptions="Center"
-			HorizontalOptions="Center">
+		<VerticalStackLayout>
 
-			<Label Text="IP:" />
-			<Entry x:Name="IpEntry" />
+			<HorizontalStackLayout>
+				<Label Text="IP:" />
+				<Entry x:Name="IpEntry" />
+			</HorizontalStackLayout>
 
-			<Label Text="Port:" />
-			<Entry x:Name="PortEntry" />
+			<HorizontalStackLayout>
+				<Label Text="Port:" />
+				<Entry x:Name="PortEntry" />
+			</HorizontalStackLayout>
 
-			<Label Text="File Path:" />
-			<Label x:Name="FilePathLabel" />
-			<Button x:Name="BrowseButton" Text="Browse" />
+			<HorizontalStackLayout>
+				<Label Text="File Path:" />
+				<Label x:Name="FilePathLabel" />
+				<Button x:Name="BrowseButton" Text="Browse" />
+			</HorizontalStackLayout>
 
 			<Button x:Name="SendFileButton" Text="Send File" />
 

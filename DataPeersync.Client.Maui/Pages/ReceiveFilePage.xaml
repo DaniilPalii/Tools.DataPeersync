@@ -7,16 +7,17 @@
 	Title="Receive File">
 
 	<ScrollView>
-		<VerticalStackLayout
-			Spacing="25"
-			VerticalOptions="Center"
-			HorizontalOptions="Center">
+		<VerticalStackLayout>
 
-			<Label Text="IP:" />
-			<Label x:Name="IpLabel" />
+			<HorizontalStackLayout>
+				<Label Text="IP:" />
+				<Label x:Name="IpLabel" />
+			</HorizontalStackLayout>
 
-			<Label Text="Port:" />
-			<Label x:Name="PortLabel" />
+			<HorizontalStackLayout>
+				<Label Text="Port:" />
+				<Label x:Name="PortLabel" />
+			</HorizontalStackLayout>
 
 			<Button x:Name="ReceiveFileButton" Text="Receive File" />
 
