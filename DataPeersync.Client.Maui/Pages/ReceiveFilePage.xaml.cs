@@ -20,10 +20,10 @@ namespace DataPeersync.Client.Maui.Pages
 
 			try
 			{
-				var cancellationTokenSource = new CancellationTokenSource();
-				Disappearing += (_, _) => cancellationTokenSource.Cancel();
-
-				var receivedFilePath = await FileReceiver.ReceiveAsync(port, @"D:\Inbox\DataPeersync", cancellationTokenSource.Token);
+				var receivedFilePath = await FileReceiver.ReceiveAsync(
+					port,
+					@"D:\Inbox\DataPeersync",
+					GetCancellationToken());
 
 				SetStatus($"Received {receivedFilePath}");
 			}
@@ -48,6 +48,14 @@ namespace DataPeersync.Client.Maui.Pages
 		private void SetStatus(string status)
 		{
 			StatusLabel.Text = status;
+		}
+
+		private CancellationToken GetCancellationToken()
+		{
+			var cancellationTokenSource = new CancellationTokenSource();
+			Disappearing += (_, _) => cancellationTokenSource.Cancel();
+
+			return cancellationTokenSource.Token;
 		}
 
 		private int port;
