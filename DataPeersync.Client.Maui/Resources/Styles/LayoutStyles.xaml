@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+	<Style TargetType="VerticalStackLayout">
+		<Setter Property="Margin" Value="30" />
+		<Setter Property="Spacing" Value="20" />
+		<Setter Property="HorizontalOptions" Value="{OnIdiom Desktop=Center, Default=Fill}" />
+		<Setter Property="VerticalOptions" Value="{OnIdiom Desktop=Center, Default=Fill}" />
+	</Style>
+
+	<Style TargetType="HorizontalStackLayout">
+		<Setter Property="Spacing" Value="10" />
+	</Style>
+
+	<Style TargetType="Label">
+		<Setter Property="VerticalOptions" Value="Center" />
+	</Style>
+
+</ResourceDictionary>

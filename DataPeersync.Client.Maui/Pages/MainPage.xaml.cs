@@ -5,16 +5,9 @@
 		public MainPage()
 		{
 			InitializeComponent();
-		}
 
-		private async void SendFileButton_OnClicked(object sender, EventArgs e)
-		{
-			await Navigation.PushAsync(new SendFilePage());
-		}
-
-		private async void ReceiveFileButton_OnClicked(object sender, EventArgs e)
-		{
-			await Navigation.PushAsync(new ReceiveFilePage());
+			SendFileButton.Clicked += async (_, _) => await Navigation.PushAsync(new SendFilePage());
+			ReceiveFileButton.Clicked += async (_, _) => await Navigation.PushAsync(new ReceiveFilePage());
 		}
 	}
 }

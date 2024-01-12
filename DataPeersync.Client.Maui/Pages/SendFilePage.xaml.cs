@@ -43,16 +43,15 @@ namespace DataPeersync.Client.Maui.Pages
 				return;
 			}
 
-			var ipEndPoint = new IPEndPoint(parsedIp, parsedPort);
-
-			var cancellationTokenSource = new CancellationTokenSource();
-			Disappearing += (_, _) => cancellationTokenSource.Cancel();
-
 			SetStatus("Sending file...");
 
 			try
 			{
-				await FileSender.SendAsync(filePath, ipEndPoint, TimeSpan.FromSeconds(30), cancellationTokenSource.Token);
+				await FileSender.SendAsync(
+					filePath,
+					new IPEndPoint(parsedIp, parsedPort),
+					TimeSpan.FromSeconds(30),
+					GetCancellationToken());
 			}
 			catch (Exception e)
 			{
@@ -60,6 +59,14 @@ namespace DataPeersync.Client.Maui.Pages
 			}
 
 			SetStatus("Sent");
+		}
+
+		private CancellationToken GetCancellationToken()
+		{
+			var cancellationTokenSource = new CancellationTokenSource();
+			Disappearing += (_, _) => cancellationTokenSource.Cancel();
+
+			return cancellationTokenSource.Token;
 		}
 
 		private void SetStatus(string status)
@@ -72,4 +79,3 @@ namespace DataPeersync.Client.Maui.Pages
 		private string filePath;
 	}
 }
-

@@ -1,6 +1,4 @@
-<?xml
-	version="1.0"
-	encoding="utf-8"?>
+<?xml version="1.0"	encoding="utf-8"?>
 
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -9,18 +7,14 @@
 	Title="Receive File">
 
 	<ScrollView>
-		<VerticalStackLayout
-			Spacing="25"
-			Padding="30,0"
-			VerticalOptions="Center"
-			HorizontalOptions="Center">
+		<VerticalStackLayout>
 
-			<HorizontalStackLayout Spacing="2">
+			<HorizontalStackLayout>
 				<Label Text="IP:" />
 				<Label x:Name="IpLabel" />
 			</HorizontalStackLayout>
 
-			<HorizontalStackLayout Spacing="2">
+			<HorizontalStackLayout>
 				<Label Text="Port:" />
 				<Label x:Name="PortLabel" />
 			</HorizontalStackLayout>
