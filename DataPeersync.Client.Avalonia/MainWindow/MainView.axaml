@@ -1,9 +1,0 @@
-<UserControl
-	xmlns="https://github.com/avaloniaui"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:local="clr-namespace:DataPeersync.Client.Avalonia.MainWindow"
-	x:Class="DataPeersync.Client.Avalonia.MainWindow.MainView"
-	x:DataType="local:MainViewModel"
->
-	<ContentControl Content="{Binding Content}"	/>
-</UserControl>

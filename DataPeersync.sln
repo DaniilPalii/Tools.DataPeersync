@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.Client.Avalonia", "DataPeersync.Client.Avalonia\DataPeersync.Client.Avalonia.csproj", "{E5D634B0-FDA7-4EAD-989B-A7A3C29F6260}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.Client.Avalonia.Android", "DataPeersync.Client.Avalonia.Android\DataPeersync.Client.Avalonia.Android.csproj", "{85B0C8B0-8C51-46A8-8A4E-DEEFD4D596AF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.Client.Avalonia.Desktop", "DataPeersync.Client.Avalonia.Desktop\DataPeersync.Client.Avalonia.Desktop.csproj", "{189880B4-0AE5-4670-90D0-8426ACB99389}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.FileTransfer.Tests", "DataPeersync.FileTransfer.Tests\DataPeersync.FileTransfer.Tests.csproj", "{A93E1F87-222B-4AB7-B999-54B2AAA54065}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataPeersync.FileTransfer", "DataPeersync.FileTransfer\DataPeersync.FileTransfer.csproj", "{0A4BF7EA-75D2-4E38-8723-404B12613F41}"
@@ -21,20 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E5D634B0-FDA7-4EAD-989B-A7A3C29F6260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5D634B0-FDA7-4EAD-989B-A7A3C29F6260}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5D634B0-FDA7-4EAD-989B-A7A3C29F6260}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5D634B0-FDA7-4EAD-989B-A7A3C29F6260}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85B0C8B0-8C51-46A8-8A4E-DEEFD4D596AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85B0C8B0-8C51-46A8-8A4E-DEEFD4D596AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85B0C8B0-8C51-46A8-8A4E-DEEFD4D596AF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{85B0C8B0-8C51-46A8-8A4E-DEEFD4D596AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85B0C8B0-8C51-46A8-8A4E-DEEFD4D596AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85B0C8B0-8C51-46A8-8A4E-DEEFD4D596AF}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{189880B4-0AE5-4670-90D0-8426ACB99389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{189880B4-0AE5-4670-90D0-8426ACB99389}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{189880B4-0AE5-4670-90D0-8426ACB99389}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{189880B4-0AE5-4670-90D0-8426ACB99389}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A93E1F87-222B-4AB7-B999-54B2AAA54065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A93E1F87-222B-4AB7-B999-54B2AAA54065}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A93E1F87-222B-4AB7-B999-54B2AAA54065}.Release|Any CPU.ActiveCfg = Release|Any CPU
